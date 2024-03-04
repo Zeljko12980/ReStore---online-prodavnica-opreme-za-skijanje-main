@@ -384,3 +384,4 @@ C:\Users\ikano\OneDrive - Faculty of Electrical Engineering, University of East 
 C:\Users\ikano\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\Desktop\ReStore---online-prodavnica-opreme-za-skijanje-main\api\obj\Debug\net8.0\API.pdb
 C:\Users\ikano\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\Desktop\ReStore---online-prodavnica-opreme-za-skijanje-main\api\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\ikano\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\Desktop\ReStore---online-prodavnica-opreme-za-skijanje-main\api\obj\Debug\net8.0\ref\API.dll
+C:\Users\ikano\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\Desktop\ReStore---online-prodavnica-opreme-za-skijanje-main\api\obj\Debug\net8.0\API.sourcelink.json
