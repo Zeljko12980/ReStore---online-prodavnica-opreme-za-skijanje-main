@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import agent from "../../app/api/agent.ts";
 import {LoadingButton} from '@mui/lab';
 import { useStoreContext } from "../../app/context/StoreContext.tsx";
+import { currencyFormat } from "../../app/util/util.ts";
 
 interface Props {
     product: Product;
@@ -42,7 +43,7 @@ const{setBasket}=useStoreContext();
             />
             <CardContent>
                 <Typography gutterBottom color='secondary' variant="h5" component="div">
-                    ${(product.price / 100).toFixed(2)}
+                    {currencyFormat(product.price)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     {product.brand} / {product.type}

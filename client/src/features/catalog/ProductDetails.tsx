@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import {Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow,  Typography} from "@mui/material";
+import {Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow,  TextField,  Typography} from "@mui/material";
 import { useParams } from 'react-router-dom';
 import { Product } from '../../app/models/product';
 import agent from '../../app/api/agent.ts'
 import NotFound from '../../app/errors/NotFound.tsx';
 import LoadingComponent from '../../app/layout/LoadingComponent.tsx';
+import { useStoreContext } from '../../app/context/StoreContext.tsx';
+import { LoadingButton } from '@mui/lab';
 
 export default function ProductDetails()
 {
-    const {id}= useParams<string>();
-const[product,setProduct]=useState<Product|null>(null);
-const[loading,setLoading]=useState(true);
+    const { id } = useParams<{ id: string }>();
+    const { basket, setBasket, removeItem } = useStoreContext();
+    const [product, setProduct] = useState<Product | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(0);
+    const [submitting, setSubmitting] = useState(false);
+    const item = basket?.items.find(i => i.productId === product?.id);
+
+
 
 useEffect(() => {
+    if (item) setQuantity(item.quantity);
     id && agent.Catalog.details(parseInt(id))
     .then(response => setProduct(response))
     .catch(error => console.log(error))
     .finally(() => setLoading(false))
     
-  }, [id]); // Dodajte id kao zavisnost
+  }, [id,item]); // Dodajte id kao zavisnost
 
   if(loading) return <LoadingComponent message='Loading product...'/>
   if(product === null) return <NotFound/>
@@ -59,7 +68,31 @@ useEffect(() => {
                 </TableBody>
             </Table>
         </TableContainer>
-        
+        <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                        <TextField
+                            
+                            variant={'outlined'}
+                            type={'number'}
+                            label={'Quantity in Cart'}
+                            fullWidth
+                            value={quantity}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <LoadingButton
+                            disabled={item?.quantity === quantity || !item && quantity === 0}
+                            loading={submitting}
+                           
+                            sx={{ height: '55px' }}
+                            color={'primary'}
+                            size={'large'}
+                            variant={'contained'}
+                            fullWidth>
+                            {item ? 'Update Quantity' : 'Add to Cart'}
+                        </LoadingButton>
+                    </Grid>
+                </Grid>
     </Grid>
 </Grid>
 );
