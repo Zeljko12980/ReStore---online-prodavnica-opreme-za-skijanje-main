@@ -8,7 +8,8 @@ import  App from '../layout/App.tsx';
 import React from 'react';
 import ServerError from '../errors/ServerError.tsx';
 import NotFound from '../errors/NotFound.tsx';
-import { BasketPage } from '../../features/basket/BasketPage.tsx';
+import BasketPage from '../../features/basket/BasketPage.tsx';
+import CheckoutPage from '../../features/checkout/CheckoutPage.tsx';
 
 
 
@@ -26,6 +27,7 @@ export const router = createBrowserRouter(([
            {path:'basket',element:<BasketPage/>},
            {path:'not-found',element:<NotFound/>},
             { path: '*', element: <Navigate replace to='/not-found' /> },
+            {path:'checkout',element:<CheckoutPage/>}
         ]
     }
 ]))
