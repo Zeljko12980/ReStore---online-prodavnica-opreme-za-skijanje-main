@@ -14,11 +14,11 @@ import { store } from './app/store/configureStore.ts';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/* Wrap your components with StoreProvider and Provider */}
-    <StoreProvider>
+   
       <Provider store={store}>
         {/* Provide the router to RouterProvider */}
         <RouterProvider router={router} />
       </Provider>
-    </StoreProvider>
+   
   </React.StrictMode>
 );

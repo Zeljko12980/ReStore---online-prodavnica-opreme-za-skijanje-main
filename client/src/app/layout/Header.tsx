@@ -2,8 +2,7 @@ import { AppBar, Badge, IconButton, List, ListItem, Switch, Toolbar, Typography,
 import {ShoppingCart} from "@mui/icons-material"
 import {Link, NavLink} from 'react-router-dom';
 import React from "react";
-import { useStoreContext } from "../context/StoreContext.tsx";
-
+import { useAppSelector } from "../store/configureStore.ts";
 interface Props {
     darkMode: boolean;
     handleThemeChange: () => void;
@@ -20,7 +19,7 @@ const rightLinks=[
     {title:'register',path:'/register'}
 ]
 export default function Header({handleThemeChange, darkMode}: Props) {
-    const {basket}=useStoreContext();
+    const {basket}=useAppSelector(state=>state.basket);
     const itemsCount=basket?.items.reduce((sum,item)=>sum+item.quantity,0);
 
     return (

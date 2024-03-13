@@ -3,12 +3,15 @@ import agent from '../../app/api/agent.ts';
 
 import { Box, Grid,  Paper,  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { Add, Delete, Remove } from '@mui/icons-material';
-import { useStoreContext } from '../../app/context/StoreContext.tsx';
+
 import { LoadingButton } from '@mui/lab';
 import BasketSummary from './BasketSummary.tsx';
+import { useAppDispatch, useAppSelector } from '../../app/store/configureStore.ts';
+import { removeItem, setBasket } from './basketSlice.ts';
 export  default function BasketPage()
 {
-const {basket,setBasket,removeItem}=useStoreContext();
+const {basket}=useAppSelector(state=>state.basket);
+const dispatch=useAppDispatch();
 
 const[status,setStatus]=useState({
   loading:false,
@@ -19,7 +22,7 @@ function handleAddItem(productId:number,name:string)
 {
   setStatus({loading:true,name});
   agent.Basket.addItem(productId)
-  .then(basket=>setBasket(basket))
+  .then(basket=>dispatch(setBasket(basket)))
   .catch(error=>console.log(error))
   .finally(()=>setStatus({loading:false,name:''}));
 }
@@ -28,7 +31,7 @@ function handleRemoveItem(productId:number,quantity=1,name)
 {
   setStatus({loading:true,name});
   agent.Basket.removeItem(productId,quantity)
-  .then(()=>removeItem(productId,quantity))
+  .then(()=>dispatch(removeItem({productId,quantity})))
   .catch(error=>console.log(error))
   .finally(()=>setStatus({loading:false,name:''}));
 }

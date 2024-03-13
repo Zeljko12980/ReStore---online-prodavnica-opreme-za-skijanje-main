@@ -2981,11 +2981,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\Desktop\\ReStore---online-prodavnica-opreme-za-skijanje-main\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\ReStore---online-prodavnica-opreme-za-skijanje-main\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\Desktop\\ReStore---online-prodavnica-opreme-za-skijanje-main\\API\\API.csproj",
+      "projectPath": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\ReStore---online-prodavnica-opreme-za-skijanje-main\\API\\API.csproj",
       "packagesPath": "C:\\Users\\ikano\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\Desktop\\ReStore---online-prodavnica-opreme-za-skijanje-main\\API\\obj\\",
+      "outputPath": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\ReStore---online-prodavnica-opreme-za-skijanje-main\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3057,7 +3057,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.103/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
