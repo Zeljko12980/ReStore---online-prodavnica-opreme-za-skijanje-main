@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Basket } from "../../app/models/basket";
-import agent from '../../app/api/agent';
+import agent from '../../app/api/agent.ts';
 
 interface BasketState {
     basket: Basket | null;
