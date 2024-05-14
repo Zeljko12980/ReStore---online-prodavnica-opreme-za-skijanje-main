@@ -11,12 +11,14 @@ import { StoreProvider } from './app/context/StoreContext.tsx';
 import { Provider } from 'react-redux';
 import { store } from './app/store/configureStore.ts';
 
+
+
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/* Wrap your components with StoreProvider and Provider */}
    
-      <Provider store={store}>
-        {/* Provide the router to RouterProvider */}
+    <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
    

@@ -5,21 +5,21 @@ import React from 'react';
 import agent from '../../app/api/agent.ts'
 import LoadingComponent from '../../app/layout/LoadingComponent.tsx';
 import NotFound from '../../app/errors/NotFound.tsx';
+import { useAppDispatch, useAppSelector } from '../../app/store/configureStore.ts';
+import { fetchProductsAsync, productSelectors } from './catalogSlice.ts';
 
 export default function Catalog() {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [loading,setLoading]=useState(true);
-    useEffect(() => {
-      agent.Catalog.list()
-      .then(products=>setProducts(products))
-      .catch(error=>console.log(error))
-      .finally(()=>setLoading(false))
-      
-    }, [])
+    const products = useAppSelector(productSelectors.selectAll);
+    const {productsLoaded, status} = useAppSelector(state => state.catalog);
+    const dispatch = useAppDispatch();
+  
+    useEffect(()=>{
+
+       if (!productsLoaded) dispatch(fetchProductsAsync());
+    }, [productsLoaded, dispatch])
 
     if(products===null) return <NotFound/>
-if(loading) return <LoadingComponent message='Loading products...'/>
-
+    if (status.includes('pending')) return <LoadingComponent message='Loading products...' />
 
     return (
         <>
