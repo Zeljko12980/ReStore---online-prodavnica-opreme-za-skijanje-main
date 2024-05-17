@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DHQ/oHqg49uLfbTYRVagRlJmICBCTPbTVp0cIsv6clano8Qr3OSqUAmhOaG73WYN4hSkzCXKApZlFEmvCTM3mQ==",
+  "dgSpecHash": "3FMCHMgaFleWyZgvxQB+0YZCWolbcI6nKR3AS7qPNp+SPZjPrKrYOu0lYUMa4QHF4Yfe69hgz+MESDQ8H6rE0Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\Desktop\\ReStore---online-prodavnica-opreme-za-skijanje-main\\api\\API.csproj",
+  "projectFilePath": "C:\\Users\\ikano\\OneDrive - Faculty of Electrical Engineering, University of East Sarajevo\\Documents\\Desktop\\ReStore---online-prodavnica-opreme-za-skijanje-main\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ikano\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ikano\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.5\\microsoft.aspnetcore.authentication.jwtbearer.8.0.5.nupkg.sha512",

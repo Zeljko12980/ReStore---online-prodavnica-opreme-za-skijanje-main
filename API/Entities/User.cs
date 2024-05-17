@@ -4,6 +4,7 @@ namespace API.Entities
 {
     public class User:IdentityUser
     {
+        public UserAdress UserAdress{get;set;}
         
     }
 }

@@ -1,38 +1,34 @@
-
 import { Container, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Header from './Header.tsx';
-import { useEffect, useState } from 'react';
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import { getCookie } from '../util/util.ts';
-import agent from '../api/agent.ts';
 import LoadingComponent from './LoadingComponent.tsx';
 import { useAppDispatch } from '../store/configureStore.ts';
-import { setBasket } from '../../features/basket/basketSlice.ts';
+import { fetchBasketAsync } from '../../features/basket/basketSlice.ts';
+import { fetchCurrentUser } from '../../features/account/accountSlice.ts';
+import HomePage from '../../features/home/HomePage.tsx';
+import React from 'react';
 
- export  default function App() {
-  const dispatch=useAppDispatch();
-const[loading,setLoading]=useState(true);
+function App() {
+  const location = useLocation();
+  const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(true);
 
-useEffect(()=>{
-  const buyerId=getCookie("buyerId")
+  const initApp = useCallback(async () => {
+    try {
+      await dispatch(fetchCurrentUser());
+      await dispatch(fetchBasketAsync());
+    } catch (error) {
+      console.log(error);
+    }
+  }, [dispatch]);
 
-  if(buyerId)
-  {
-    agent.Basket.get()
-    .then(basket=>dispatch(setBasket(basket)))
-    .catch(error=>console.log(error))
-    .finally(()=>setLoading(false));
-  }
-  else{
-    setLoading(false);
-  }
-})
-
-
+  useEffect(() => {
+    initApp().then(() => setLoading(false));
+  }, [initApp])
+  
   const [darkMode, setDarkMode] = useState(false);
   const palleteType = darkMode ? 'dark' : 'light';
   const theme = createTheme({
@@ -47,16 +43,21 @@ useEffect(()=>{
   function handleThemeChange() {
     setDarkMode(!darkMode);
   }
-if(loading) return <LoadingComponent message='Initialising app...'/>
+
   return (
     <ThemeProvider theme={theme}>
-      <ToastContainer position="bottom-right" hideProgressBar theme="colored"/>
+      <ToastContainer position='bottom-right' hideProgressBar theme='colored'  />
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
-      <Container>
-       <Outlet/>
-     </Container>
-     
+      {
+        loading ? <LoadingComponent message='Initialising app...' />
+          : location.pathname === '/' ? <HomePage />
+          : <Container sx={{mt: 4}}>
+              <Outlet />
+            </Container>
+      }
     </ThemeProvider>
   );
 }
+
+export default App
